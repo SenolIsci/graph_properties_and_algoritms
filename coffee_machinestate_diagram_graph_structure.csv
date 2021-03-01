@@ -1,0 +1,11 @@
+source,target,Evt
+idle,deposit,coin inserted
+deposit,deposit,coin inserted
+deposit,idle,coin return
+deposit,selection,rigth amount entered
+selection,idle,coin return
+selection,making coffee,button pushed
+making coffee,idle,cup removed
+making coffee,maintenance,sensor alert
+maintenance,idle,reset button
+off,idle,power up

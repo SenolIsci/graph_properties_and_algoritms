@@ -1,0 +1,263 @@
+STATES:
+['idle', 'deposit', 'selection', 'making coffee', 'maintenance', 'off']
+Number of states:  6
+Number of transitions:  10
+
+CONNECTIVITY TABLE:
+               degree  in_degree  out_degree  avg_neighg_degree
+STATE                                                          
+idle                6          5           1                3.0
+deposit             5          2           3                2.0
+selection           3          1           2                1.5
+making coffee       3          1           2                1.0
+maintenance         2          1           1                1.0
+off                 1          0           1                1.0
+
+NEIGBOUR STATES:
+idle : ['deposit']
+deposit : ['deposit', 'idle', 'selection']
+selection : ['idle', 'making coffee']
+making coffee : ['idle', 'maintenance']
+maintenance : ['idle']
+off : ['idle']
+
+EVENT TYPES
+{'reset button', 'button pushed', 'power up', 'coin return', 'rigth amount entered', 'sensor alert', 'cup removed', 'coin inserted'}
+
+SELF CYCLIC STATES
+['deposit']
+
+ISOLATE/UNCONNECTED NODES
+[]
+
+STRONG CONNECTIVITY PROPERTIES:
+is strongly connected:  False
+number of strongly connected components:  2
+List of strongly connected components:
+[{'maintenance', 'selection', 'deposit', 'idle', 'making coffee'}, {'off'}]
+Largest strongly connected components:
+{'maintenance', 'selection', 'deposit', 'idle', 'making coffee'}
+Smallest strongly connected components:
+{'off'}
+
+WEAK CONNECTIVITY PROPERTIES:
+is weakly connected:  True
+number of weakly connected components:  1
+List of weakly connected components:
+[{'maintenance', 'selection', 'deposit', 'off', 'idle', 'making coffee'}]
+
+ATTRACTING COMPONENTS PROPERTIES:
+is the graph attracting component:  False
+number of attracting components:  1
+List of attracting components:
+[{'maintenance', 'selection', 'deposit', 'idle', 'making coffee'}]
+
+TRANSITIONS and EVENTS
+idle -> deposit : coin inserted
+deposit -> deposit : coin inserted
+deposit -> idle : coin return
+deposit -> selection : rigth amount entered
+selection -> idle : coin return
+selection -> making coffee : button pushed
+making coffee -> idle : cup removed
+making coffee -> maintenance : sensor alert
+maintenance -> idle : reset button
+off -> idle : power up
+
+TRANSITIONS TABLE
+              reset button  button pushed power up coin return  \
+idle                     _              _        _           _   
+deposit                  _              _        _        idle   
+selection                _  making coffee        _        idle   
+making coffee            _              _        _           _   
+maintenance           idle              _        _           _   
+off                      _              _     idle           _   
+
+              rigth amount entered sensor alert cup removed coin inserted  
+idle                             _            _           _       deposit  
+deposit                  selection            _           _       deposit  
+selection                        _            _           _             _  
+making coffee                    _  maintenance        idle             _  
+maintenance                      _            _           _             _  
+off                              _            _           _             _  
+
+SHORTEST PATH LENGTHS 
+[('idle', {'idle': 0, 'deposit': 1, 'selection': 2, 'making coffee': 3, 'maintenance': 4}), ('deposit', {'deposit': 0, 'idle': 1, 'selection': 1, 'making coffee': 2, 'maintenance': 3}), ('selection', {'selection': 0, 'idle': 1, 'making coffee': 1, 'deposit': 2, 'maintenance': 2}), ('making coffee', {'making coffee': 0, 'idle': 1, 'maintenance': 1, 'deposit': 2, 'selection': 3}), ('maintenance', {'maintenance': 0, 'idle': 1, 'deposit': 2, 'selection': 3, 'making coffee': 4}), ('off', {'off': 0, 'idle': 1, 'deposit': 2, 'selection': 3, 'making coffee': 4, 'maintenance': 5})]
+
+TRANSITION PATHS
+(Paths are simple paths with no repeated nodes)
+idle -> deposit -> selection -> making coffee -> maintenance
+idle -> deposit -> selection -> making coffee
+idle -> deposit -> selection
+idle -> deposit
+deposit -> selection -> making coffee -> maintenance
+deposit -> selection -> making coffee
+deposit -> selection
+deposit -> idle
+deposit -> selection -> idle
+deposit -> selection -> making coffee -> idle
+deposit -> selection -> making coffee -> maintenance -> idle
+selection -> making coffee -> maintenance
+selection -> making coffee
+selection -> idle -> deposit
+selection -> making coffee -> idle -> deposit
+selection -> making coffee -> maintenance -> idle -> deposit
+selection -> idle
+selection -> making coffee -> idle
+selection -> making coffee -> maintenance -> idle
+making coffee -> maintenance
+making coffee -> idle -> deposit -> selection
+making coffee -> maintenance -> idle -> deposit -> selection
+making coffee -> idle -> deposit
+making coffee -> maintenance -> idle -> deposit
+making coffee -> idle
+making coffee -> maintenance -> idle
+maintenance -> idle -> deposit -> selection -> making coffee
+maintenance -> idle -> deposit -> selection
+maintenance -> idle -> deposit
+maintenance -> idle
+off -> idle -> deposit -> selection -> making coffee -> maintenance
+off -> idle -> deposit -> selection -> making coffee
+off -> idle -> deposit -> selection
+off -> idle -> deposit
+off -> idle
+
+CYCLIC TRANSITION PATHS
+(closed paths/ circuits)
+['deposit']
+['maintenance', 'idle', 'deposit', 'selection', 'making coffee']
+['deposit', 'selection', 'making coffee', 'idle']
+['deposit', 'selection', 'idle']
+['deposit', 'idle']
+
+TRANSITION PATHS AND EVENTS
+(Paths are simple paths with no repeated nodes)
+
+coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance
+
+
+coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee
+
+
+coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection
+
+
+coin inserted : idle -> deposit
+
+
+rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance
+
+
+rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee
+
+
+rigth amount entered : deposit -> selection
+
+
+coin return : deposit -> idle
+
+
+rigth amount entered : deposit -> selection] -> coin return : selection -> idle
+
+
+rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee] -> cup removed : making coffee -> idle
+
+
+rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance] -> reset button : maintenance -> idle
+
+
+button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance
+
+
+button pushed : selection -> making coffee
+
+
+coin return : selection -> idle] -> coin inserted : idle -> deposit
+
+
+button pushed : selection -> making coffee] -> cup removed : making coffee -> idle] -> coin inserted : idle -> deposit
+
+
+button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance] -> reset button : maintenance -> idle] -> coin inserted : idle -> deposit
+
+
+coin return : selection -> idle
+
+
+button pushed : selection -> making coffee] -> cup removed : making coffee -> idle
+
+
+button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance] -> reset button : maintenance -> idle
+
+
+sensor alert : making coffee -> maintenance
+
+
+cup removed : making coffee -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection
+
+
+sensor alert : making coffee -> maintenance] -> reset button : maintenance -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection
+
+
+cup removed : making coffee -> idle] -> coin inserted : idle -> deposit
+
+
+sensor alert : making coffee -> maintenance] -> reset button : maintenance -> idle] -> coin inserted : idle -> deposit
+
+
+cup removed : making coffee -> idle
+
+
+sensor alert : making coffee -> maintenance] -> reset button : maintenance -> idle
+
+
+reset button : maintenance -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee
+
+
+reset button : maintenance -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection
+
+
+reset button : maintenance -> idle] -> coin inserted : idle -> deposit
+
+
+reset button : maintenance -> idle
+
+
+power up : off -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance
+
+
+power up : off -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee
+
+
+power up : off -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection
+
+
+power up : off -> idle] -> coin inserted : idle -> deposit
+
+
+power up : off -> idle
+
+
+CYCLIC TRANSITION PATHS AND EVENTS
+(loops)
+
+coin inserted : deposit -> deposit
+
+
+reset button : maintenance -> idle] -> coin inserted : idle -> deposit] -> rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee] -> sensor alert : making coffee -> maintenance
+
+
+rigth amount entered : deposit -> selection] -> button pushed : selection -> making coffee] -> cup removed : making coffee -> idle] -> coin inserted : idle -> deposit
+
+
+rigth amount entered : deposit -> selection] -> coin return : selection -> idle] -> coin inserted : idle -> deposit
+
+
+coin return : deposit -> idle] -> coin inserted : idle -> deposit
+
+
+COLLAPSED GRAPH
+(nodes that can be merged)
+count of final nodes: 2
+node mappings:
+ {'maintenance': 0, 'selection': 0, 'deposit': 0, 'idle': 0, 'making coffee': 0, 'off': 1}
