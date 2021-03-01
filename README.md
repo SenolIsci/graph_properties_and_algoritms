@@ -761,7 +761,7 @@ draw_graph(G)
 ```
 
 
-![png](state_graph_example_files/state_graph_example_19_0.png)
+![png](state_graph_example_19_0.png)
 
 
 
