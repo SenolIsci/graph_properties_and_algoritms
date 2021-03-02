@@ -33,6 +33,12 @@ def draw_graph(G):
     
     plt.show()
 
+def construct_graph_from_file(file_to_read=None):
+    
+    #load graph from file
+    dfl=pd.read_csv(file_to_read)
+    GFL=nx.from_pandas_edgelist(dfl,edge_attr=Evt_SYMB)
+    return GFL
 
 def construct_graph_coffee_machine(file_to_read=None):
     
@@ -83,6 +89,7 @@ def construct_graph_pin_automata(file_to_read=None):
 
     G.graph["title"]="pin_automata"    
     return G
+
 
 
 def construct_graph_count_double_zeros_automata_v1(file_to_read=None):
@@ -283,6 +290,7 @@ def condensed_graph(G):
 
 
 G=construct_graph_coffee_machine()
+#G=construct_graph_from_file("coffee_machinestate_diagram_graph_structure.csv")
 #G=construct_graph_pin_automata()
 #G=construct_graph_count_double_zeros_automata_v1()
 #G=construct_graph_count_double_zeros_automata_v2()
@@ -368,11 +376,7 @@ df=nx.to_pandas_edgelist(G)
 df.to_csv(G.graph["title"]+"state_diagram_graph_structure.csv",index=False)
 #sys.stdout.close()
 
-if False:
-    #load graph from file
-    dfl=pd.read_csv("state_diagram_graph_structure.csv")
-    GFL=nx.from_pandas_edgelist(dfl,edge_attr=Evt_SYMB)
-    draw_graph(GFL)
+
     
 
 # try:

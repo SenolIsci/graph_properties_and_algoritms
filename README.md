@@ -36,7 +36,14 @@ def draw_graph(G):
     plt.savefig(graph_title+"state_diagram_graph_structure"+".png",dpi=300) 
     
     plt.show()
-
+    
+    
+def construct_graph_from_file(file_to_read=None):
+    
+    #load graph from file
+    dfl=pd.read_csv(file_to_read)
+    GFL=nx.from_pandas_edgelist(dfl,edge_attr=Evt_SYMB)
+    return GFL
 
 def construct_graph_coffee_machine(file_to_read=None):
     
@@ -188,9 +195,6 @@ def self_cyclic_nodes_in_the_graph(G):
     print(sc)
     return sc
 
-
-
-
     
 def simple_cycles_for_all_nodes(G):
     cycles=list(nx.simple_cycles(G))
@@ -290,6 +294,7 @@ def condensed_graph(G):
 
 ```python
 G=construct_graph_coffee_machine()
+#G=construct_graph_from_file("coffee_machinestate_diagram_graph_structure.csv")
 #G=construct_graph_pin_automata()
 #G=construct_graph_count_double_zeros_automata_v1()
 #G=construct_graph_count_double_zeros_automata_v2()
@@ -761,7 +766,7 @@ draw_graph(G)
 ```
 
 
-![png](state_graph_example_19_0.png)
+![png](state_graph_example_files/state_graph_example_19_0.png)
 
 
 
