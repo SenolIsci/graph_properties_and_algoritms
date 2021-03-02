@@ -775,12 +775,6 @@ df=nx.to_pandas_edgelist(G)
 df.to_csv(G.graph["title"]+"state_diagram_graph_structure.csv",index=False)
 #sys.stdout.close()
 
-if False:
-    #load graph from file
-    dfl=pd.read_csv("state_diagram_graph_structure.csv")
-    GFL=nx.from_pandas_edgelist(dfl,edge_attr=Evt_SYMB)
-    draw_graph(GFL)
-
 ```
 
 
